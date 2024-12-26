@@ -300,6 +300,10 @@ export class ChatGPTApi implements LLMApi {
           isDalle3 ? OpenaiPath.ImagePath : OpenaiPath.ChatPath,
         );
       }
+      chatPath =
+        window.location.hostname === "localhost"
+          ? "https://chat.songm.top/api/openai/v1/chat/completions"
+          : chatPath;
       if (shouldStream) {
         // const [tools, funcs] = usePluginStore
         //   .getState()
