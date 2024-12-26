@@ -494,7 +494,7 @@ export function ChatActions(props: {
   const usePlugins = chatStore.currentSession().mask.usePlugins;
   function switchUsePlugins() {
     chatStore.updateCurrentSession((session) => {
-      session.mask.usePlugins = !session.mask.usePlugins;
+      //session.mask.usePlugins = !session.mask.usePlugins;
     });
   }
 
