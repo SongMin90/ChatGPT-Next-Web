@@ -49,8 +49,8 @@ export function useAllModels() {
   }, []);
 
   const models = useMemo(() => {
-    // 将API模型转换为应用所需的格式
-    let seq = 1000;
+    let seq = 1;
+    let seq2 = 1000;
     const apiModelIds = apiModels.map((model) => ({
       name: model.id,
       available: model.active,
@@ -58,27 +58,51 @@ export function useAllModels() {
         id: model.owned_by,
         providerName: model.owned_by,
         providerType: model.owned_by,
-        sorted: 1,
+        sorted: seq++,
       },
-      sorted: seq++,
+      sorted: seq2++,
     }));
-
-    // 确定默认模型
-    let defaultModel = accessStore.defaultModel;
-    if (!defaultModel) {
-      const preferredModel = apiModelIds.find(
-        (model) => model.name === "llama-3.3-70b-versatile",
-      );
-      if (preferredModel) {
-        defaultModel = preferredModel.name;
-      }
-    }
+    apiModelIds.push(
+      {
+        name: "deepseek-chat",
+        available: true,
+        sorted: seq2++,
+        provider: {
+          id: "deepseek",
+          providerName: "爬虫",
+          providerType: "deepseek",
+          sorted: seq++,
+        },
+      },
+      {
+        name: "claude-3.5-sonnet",
+        available: true,
+        sorted: seq2++,
+        provider: {
+          id: "anthropic",
+          providerName: "爬虫",
+          providerType: "anthropic",
+          sorted: seq++,
+        },
+      },
+      {
+        name: "gpt-4o",
+        available: true,
+        sorted: seq2++,
+        provider: {
+          id: "openai",
+          providerName: "爬虫",
+          providerType: "openai",
+          sorted: seq++,
+        },
+      },
+    );
 
     // 合并API模型与现有配置
     return collectModelsWithDefaultModel(
       [...apiModelIds],
       [configStore.customModels, accessStore.customModels].join(","),
-      defaultModel,
+      accessStore.defaultModel,
     );
   }, [
     apiModels,

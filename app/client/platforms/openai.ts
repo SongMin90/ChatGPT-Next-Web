@@ -304,6 +304,15 @@ export class ChatGPTApi implements LLMApi {
         window.location.hostname === "localhost"
           ? "https://chat.songm.top/api/openai/v1/chat/completions"
           : chatPath;
+      if (modelConfig.model === "deepseek-chat") {
+        chatPath = "https://ds.tzucpa.cn/v1/chat/completions";
+      } else if (
+        modelConfig.model === "claude-3.5-sonnet" ||
+        modelConfig.model === "gpt-4o"
+      ) {
+        chatPath = "https://pe-run.tzucpa.cn/v1/chat/completions";
+      }
+      console.log("modelConfig.model", modelConfig.model);
       if (shouldStream) {
         // const [tools, funcs] = usePluginStore
         //   .getState()

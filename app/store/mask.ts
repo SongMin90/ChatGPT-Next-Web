@@ -17,7 +17,7 @@ export type Mask = {
   modelConfig: ModelConfig;
   lang: Lang;
   builtin: boolean;
-  usePlugins?: boolean;
+  usePlugins: false;
   // 上游插件业务参数
   plugin?: string[];
   enableArtifacts?: boolean;
@@ -42,9 +42,7 @@ export const createEmptyMask = () =>
     lang: getLang(),
     builtin: false,
     createdAt: Date.now(),
-    usePlugins: /^gpt(?!.*03\d{2}$).*$/.test(
-      useAppConfig.getState().modelConfig.model,
-    ),
+    usePlugins: false,
   }) as Mask;
 
 export const useMaskStore = createPersistStore(
