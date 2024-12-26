@@ -179,7 +179,7 @@ export class ClientApi {
   public file: FileApi;
 
   constructor(provider: ModelProvider = ModelProvider.GPT) {
-    switch (provider) {
+    /* switch (provider) {
       case ModelProvider.GeminiPro:
         this.llm = new GeminiProApi();
         break;
@@ -212,7 +212,8 @@ export class ClientApi {
         break;
       default:
         this.llm = new ChatGPTApi();
-    }
+    } */
+    this.llm = new ChatGPTApi();
     this.file = new FileApi();
   }
 
