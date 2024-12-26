@@ -17,7 +17,7 @@ export type Mask = {
   modelConfig: ModelConfig;
   lang: Lang;
   builtin: boolean;
-  usePlugins: false;
+  usePlugins?: boolean;
   // 上游插件业务参数
   plugin?: string[];
   enableArtifacts?: boolean;

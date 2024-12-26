@@ -64,12 +64,23 @@ export function useAllModels() {
     }));
     apiModelIds.push(
       {
+        name: "llama-3.3-70b-versatile",
+        available: true,
+        sorted: seq2++,
+        provider: {
+          id: "llama-3.3-70b-versatile",
+          providerName: "默认",
+          providerType: "meta",
+          sorted: seq++,
+        },
+      },
+      {
         name: "deepseek-chat",
         available: true,
         sorted: seq2++,
         provider: {
           id: "deepseek",
-          providerName: "爬虫",
+          providerName: "DeepSeek",
           providerType: "deepseek",
           sorted: seq++,
         },
@@ -80,7 +91,7 @@ export function useAllModels() {
         sorted: seq2++,
         provider: {
           id: "anthropic",
-          providerName: "爬虫",
+          providerName: "Anthropic",
           providerType: "anthropic",
           sorted: seq++,
         },
@@ -91,7 +102,7 @@ export function useAllModels() {
         sorted: seq2++,
         provider: {
           id: "openai",
-          providerName: "爬虫",
+          providerName: "OpenAI",
           providerType: "openai",
           sorted: seq++,
         },
