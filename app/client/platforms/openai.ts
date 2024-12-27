@@ -304,15 +304,16 @@ export class ChatGPTApi implements LLMApi {
         window.location.hostname === "localhost"
           ? "https://chat.songm.top/api/openai/v1/chat/completions"
           : chatPath;
-      if (modelConfig.model === "deepseek-chat") {
-        chatPath = "https://ds.tzucpa.cn/v1/chat/completions";
-      } else if (
+      if (
         modelConfig.model === "claude-3.5-sonnet" ||
-        modelConfig.model === "gpt-4o"
+        modelConfig.model === "gpt-4o" ||
+        modelConfig.model === "deepseek-chat" ||
+        modelConfig.model === "GLM-4" ||
+        modelConfig.model === "EB35" ||
+        modelConfig.model === "doubao"
       ) {
         chatPath = "https://pe-run.tzucpa.cn/v1/chat/completions";
       }
-      console.log("modelConfig.model", modelConfig.model);
       if (shouldStream) {
         // const [tools, funcs] = usePluginStore
         //   .getState()
