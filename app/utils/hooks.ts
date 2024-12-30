@@ -107,6 +107,17 @@ export function useAllModels() {
           sorted: seq++,
         },
       },
+      {
+        name: "GLM-4",
+        available: true,
+        sorted: seq2++,
+        provider: {
+          id: "chatglm",
+          providerName: "智谱清言",
+          providerType: "chatglm",
+          sorted: seq++,
+        },
+      },
     );
 
     // 合并API模型与现有配置
