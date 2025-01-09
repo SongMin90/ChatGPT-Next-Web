@@ -305,12 +305,12 @@ export class ChatGPTApi implements LLMApi {
           ? "https://chat.songm.top/api/openai/v1/chat/completions"
           : chatPath;
       if (
-        modelConfig.model === "claude-3.5-sonnet" ||
-        modelConfig.model === "gpt-4o" ||
         modelConfig.model === "deepseek-chat" ||
         modelConfig.model === "GLM-4" ||
         modelConfig.model === "EB35" ||
-        modelConfig.model === "doubao"
+        modelConfig.model === "doubao" ||
+        modelConfig.model.toLowerCase().includes("claude") ||
+        modelConfig.model.toLowerCase().includes("gpt")
       ) {
         chatPath = "https://pe-run.tzucpa.cn/v1/chat/completions";
       }
