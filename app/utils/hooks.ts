@@ -51,17 +51,20 @@ export function useAllModels() {
   const models = useMemo(() => {
     let seq = 1;
     let seq2 = 1000;
-    const apiModelIds = apiModels.map((model) => ({
-      name: model.id,
-      available: model.active,
-      provider: {
-        id: model.owned_by,
-        providerName: model.owned_by,
-        providerType: model.owned_by,
-        sorted: seq++,
-      },
-      sorted: seq2++,
-    }));
+    // apiModels排除含whisper的模型
+    const apiModelIds = apiModels
+      .filter((model) => !model.id.includes("whisper"))
+      .map((model) => ({
+        name: model.id,
+        available: model.active,
+        provider: {
+          id: model.owned_by,
+          providerName: model.owned_by,
+          providerType: model.owned_by,
+          sorted: seq++,
+        },
+        sorted: seq2++,
+      }));
     apiModelIds.push(
       {
         name: "llama-3.3-70b-versatile",
