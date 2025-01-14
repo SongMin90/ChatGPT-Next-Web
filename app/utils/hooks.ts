@@ -121,6 +121,17 @@ export function useAllModels() {
           sorted: seq++,
         },
       },
+      {
+        name: "qwen2.5-72b-instruct",
+        available: true,
+        sorted: seq2++,
+        provider: {
+          id: "qwen",
+          providerName: "通义千问",
+          providerType: "qwen",
+          sorted: seq++,
+        },
+      },
     );
 
     // 合并API模型与现有配置

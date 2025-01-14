@@ -310,7 +310,8 @@ export class ChatGPTApi implements LLMApi {
         modelConfig.model === "EB35" ||
         modelConfig.model === "doubao" ||
         modelConfig.model.toLowerCase().includes("claude") ||
-        modelConfig.model.toLowerCase().includes("gpt")
+        modelConfig.model.toLowerCase().includes("gpt") ||
+        modelConfig.model.toLowerCase().includes("qwen")
       ) {
         chatPath = "https://pe-run.tzucpa.cn/v1/chat/completions";
       }
