@@ -300,21 +300,21 @@ export class ChatGPTApi implements LLMApi {
           isDalle3 ? OpenaiPath.ImagePath : OpenaiPath.ChatPath,
         );
       }
-      chatPath =
-        window.location.hostname === "localhost"
-          ? "https://chat.songm.top/api/openai/v1/chat/completions"
-          : chatPath;
-      if (
-        modelConfig.model === "deepseek-chat" ||
-        modelConfig.model === "GLM-4" ||
-        modelConfig.model === "EB35" ||
-        modelConfig.model === "doubao" ||
-        modelConfig.model.toLowerCase().includes("claude") ||
-        modelConfig.model.toLowerCase().includes("gpt") ||
-        modelConfig.model.toLowerCase().includes("qwen")
-      ) {
-        chatPath = "https://pe-run.tzucpa.cn/v1/chat/completions";
-      }
+      // chatPath =
+      //   window.location.hostname === "localhost"
+      //     ? "https://chat.songm.top/api/openai/v1/chat/completions"
+      //     : chatPath;
+      // if (
+      //   modelConfig.model === "deepseek-chat" ||
+      //   modelConfig.model === "GLM-4" ||
+      //   modelConfig.model === "EB35" ||
+      //   modelConfig.model === "doubao" ||
+      //   modelConfig.model.toLowerCase().includes("claude") ||
+      //   modelConfig.model.toLowerCase().includes("gpt") ||
+      //   modelConfig.model.toLowerCase().includes("qwen")
+      // ) {
+      chatPath = "https://pe-run.tzucpa.cn/v1/chat/completions";
+      // }
       if (shouldStream) {
         // const [tools, funcs] = usePluginStore
         //   .getState()

@@ -27,14 +27,9 @@ export function useAllModels() {
     const controller = new AbortController();
     const fetchModels = async () => {
       try {
-        const response = await fetch(
-          window.location.hostname === "localhost"
-            ? "https://chat.songm.top/api/openai/v1/models"
-            : "/api/openai/v1/models",
-          {
-            signal: controller.signal,
-          },
-        );
+        const response = await fetch("https://pe-run.tzucpa.cn/v1/models", {
+          signal: controller.signal,
+        });
         const data: ModelsResponse = await response.json();
         setApiModels(data.data);
       } catch (error: any) {
@@ -65,74 +60,74 @@ export function useAllModels() {
         },
         sorted: seq2++,
       }));
-    apiModelIds.push(
-      {
-        name: "llama-3.3-70b-versatile",
-        available: true,
-        sorted: seq2++,
-        provider: {
-          id: "llama-3.3-70b-versatile",
-          providerName: "默认",
-          providerType: "meta",
-          sorted: seq++,
-        },
-      },
-      {
-        name: "deepseek-chat",
-        available: true,
-        sorted: seq2++,
-        provider: {
-          id: "deepseek",
-          providerName: "DeepSeek",
-          providerType: "deepseek",
-          sorted: seq++,
-        },
-      },
-      {
-        name: "claude-3.5-sonnet",
-        available: true,
-        sorted: seq2++,
-        provider: {
-          id: "anthropic",
-          providerName: "Anthropic",
-          providerType: "anthropic",
-          sorted: seq++,
-        },
-      },
-      {
-        name: "gpt-4o",
-        available: true,
-        sorted: seq2++,
-        provider: {
-          id: "openai",
-          providerName: "OpenAI",
-          providerType: "openai",
-          sorted: seq++,
-        },
-      },
-      {
-        name: "GLM-4",
-        available: true,
-        sorted: seq2++,
-        provider: {
-          id: "chatglm",
-          providerName: "智谱清言",
-          providerType: "chatglm",
-          sorted: seq++,
-        },
-      },
-      {
-        name: "qwen2.5-72b-instruct",
-        available: true,
-        sorted: seq2++,
-        provider: {
-          id: "qwen",
-          providerName: "通义千问",
-          providerType: "qwen",
-          sorted: seq++,
-        },
-      },
-    );
+    // apiModelIds.push(
+    //   {
+    //     name: "llama-3.3-70b-versatile",
+    //     available: true,
+    //     sorted: seq2++,
+    //     provider: {
+    //       id: "llama-3.3-70b-versatile",
+    //       providerName: "默认",
+    //       providerType: "meta",
+    //       sorted: seq++,
+    //     },
+    //   },
+    //   {
+    //     name: "deepseek-chat",
+    //     available: true,
+    //     sorted: seq2++,
+    //     provider: {
+    //       id: "deepseek",
+    //       providerName: "DeepSeek",
+    //       providerType: "deepseek",
+    //       sorted: seq++,
+    //     },
+    //   },
+    //   {
+    //     name: "claude-3.5-sonnet",
+    //     available: true,
+    //     sorted: seq2++,
+    //     provider: {
+    //       id: "anthropic",
+    //       providerName: "Anthropic",
+    //       providerType: "anthropic",
+    //       sorted: seq++,
+    //     },
+    //   },
+    //   {
+    //     name: "gpt-4o",
+    //     available: true,
+    //     sorted: seq2++,
+    //     provider: {
+    //       id: "openai",
+    //       providerName: "OpenAI",
+    //       providerType: "openai",
+    //       sorted: seq++,
+    //     },
+    //   },
+    //   {
+    //     name: "GLM-4",
+    //     available: true,
+    //     sorted: seq2++,
+    //     provider: {
+    //       id: "chatglm",
+    //       providerName: "智谱清言",
+    //       providerType: "chatglm",
+    //       sorted: seq++,
+    //     },
+    //   },
+    //   {
+    //     name: "qwen2.5-72b-instruct",
+    //     available: true,
+    //     sorted: seq2++,
+    //     provider: {
+    //       id: "qwen",
+    //       providerName: "通义千问",
+    //       providerType: "qwen",
+    //       sorted: seq++,
+    //     },
+    //   },
+    // );
 
     // 合并API模型与现有配置
     return collectModelsWithDefaultModel(
